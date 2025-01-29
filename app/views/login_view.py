@@ -39,7 +39,7 @@ class LoginView:
         self.domain_entry.pack(pady=5)
 
         # Champ Serveur
-        self.server_entry = ctk.CTkEntry(self.root, placeholder_text="Serveur LDAP (ex : ldap://10.0.0.1)")
+        self.server_entry = ctk.CTkEntry(self.root, placeholder_text="Serveur LDAP")
         self.server_entry.pack(pady=5)
 
         # Champ Utilisateur
