@@ -1,4 +1,5 @@
 import customtkinter as ctk
+from tkinter import messagebox
 from ..controllers.auth_controller import AuthController
 from .home_view import HomeView
 
@@ -38,7 +39,7 @@ class LoginView:
         self.domain_entry.pack(pady=5)
 
         # Champ Serveur
-        self.server_entry = ctk.CTkEntry(self.root, placeholder_text="Serveur")
+        self.server_entry = ctk.CTkEntry(self.root, placeholder_text="Serveur LDAP (ex : ldap://mon.super.server.com)")
         self.server_entry.pack(pady=5)
 
         # Champ Utilisateur
@@ -66,8 +67,8 @@ class LoginView:
             home_view = HomeView()  # Ouvrir la page d'accueil
             home_view.show()
         else:
-            # Afficher un message d'erreur (à implémenter)
-            print("Échec de la connexion")
+            # Afficher un message d'erreur
+            messagebox.showerror("Erreur", "Échec de la connexion. Vérifiez vos identifiants ou le serveur LDAP.")
 
     def show(self):
         self.root.mainloop()
