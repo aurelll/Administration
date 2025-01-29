@@ -15,7 +15,7 @@ cd /d C:\.Scripts\Administration
 
 REM Vérifier si l'environnement virtuel existe
 if not exist "env" (
-    echo Environnement virtuel non trouvé, création...
+    echo Pas d' environnement virtuel ... je gère
     python -m venv env
 )
 
@@ -23,7 +23,7 @@ REM Activer l'environnement virtuel
 call env\Scripts\activate
 
 REM Vérification que l'environnement virtuel est bien activé
-echo Environnement virtuel activé. Vous pouvez maintenant lancer main.py.
+echo Environnement virtuel, enfin,  activé. Tu peux lancer main.py.
 
 REM Vérifier si 'customtkinter' est installé dans l'environnement
 python -m pip show customtkinter >nul 2>&1

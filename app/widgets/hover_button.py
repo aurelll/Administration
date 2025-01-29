@@ -19,7 +19,7 @@ class HoverButton(ctk.CTkButton):
         """
         return "#1E90FF"  # Exemple de couleur plus claire
 
-    def _on_enter(self, event):
+    def _on_enter(self, event=None):  # Ajouter `event=None` pour gérer les appels sans argument
         """Effet au survol."""
         self.configure(fg_color=self.hover_bg_color)
 
