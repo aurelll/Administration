@@ -1,7 +1,7 @@
 import customtkinter as ctk
 from tkinter import messagebox
 from ..controllers.auth_controller import AuthController
-from .home_view import HomeView
+from ..widgets.hover_button import HoverButton
 
 class LoginView:
     def __init__(self):
@@ -39,7 +39,7 @@ class LoginView:
         self.domain_entry.pack(pady=5)
 
         # Champ Serveur
-        self.server_entry = ctk.CTkEntry(self.root, placeholder_text="Serveur LDAP (ex : ldap://mon.super.server.com)")
+        self.server_entry = ctk.CTkEntry(self.root, placeholder_text="Serveur LDAP (ex : ldap://10.0.0.1)")
         self.server_entry.pack(pady=5)
 
         # Champ Utilisateur
@@ -51,8 +51,11 @@ class LoginView:
         self.password_entry.pack(pady=5)
 
         # Bouton Connexion
-        login_button = ctk.CTkButton(self.root, text="Se connecter", command=self._on_login)
-        login_button.pack(pady=20)
+        self.login_button = HoverButton(self.root, text="Se connecter", command=self._on_login)
+        self.login_button.pack(pady=20)
+
+        # Lier la touche "Entrer" au bouton de connexion
+        self.root.bind("<Return>", lambda event: self._on_login())
 
     def _on_login(self):
         # Récupérer les valeurs des champs
@@ -64,6 +67,7 @@ class LoginView:
         # Authentification
         if self.auth_controller.authenticate(domain, server, username, password):
             self.root.destroy()  # Fermer la fenêtre de login
+            from .home_view import HomeView  # Importer ici pour éviter la circularité
             home_view = HomeView()  # Ouvrir la page d'accueil
             home_view.show()
         else:
