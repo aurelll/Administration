@@ -1,7 +1,7 @@
 @echo off
 setlocal enabledelayedexpansion
 
-:: Aller dans le dossier du projet 
+:: Aller dans le dossier du projet si besoin 
 :: cd /d "C:\chemin\vers\projet"
 
 :: Demander un message de commit à l'utilisateur
